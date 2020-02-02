@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import wget
+import random
+import time
+from urllib.request import urlopen as uReq
+from bs4 import BeautifulSoup as soup 
+
+from progress.bar import (Bar)
+url = 'https://www.google.com/'
+uClient = uReq(url)
+html_page = uClient.read()
+uClient.close()
+page_soup =soup(html_page,'html.parser')
+page_download =page_soup.findAll('html')
+def sleep():
+    t = 0.01
+    t += t * random.uniform(-0.1, 0.1)  # Add some variance
+    time.sleep(t)
+
+
+#suffix = '[%(eta)d]'
+bar =Bar(Bar.__name__)
+for i in bar.iter(range(100)):
+    sleep()
+wget.download(url,'c:/pyth/webscriping/dwnlds/Jdiddy1.txt')
+#print('\n Hello Dieudonne \n')
+
