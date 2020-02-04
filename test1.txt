@@ -11,61 +11,60 @@ import time
 import progressbar
 import logging
 """
-url = "https://www.google.com/"
+url = "https://www.tutorialspoint.com/"
 uClient = uReq(url)
 html_page = uClient.read()
 uClient.close()
 
 page_soup =soup(html_page,"html.parser")
 
-#print(page_soup.findAll("html"))
-
+print('Entered Domain name is: ')
+print('----------------------------------')
+print()
+print(url)
+print('----------------------------------')
+print()
+print('Output 1:')	
+print()
+print('Plain Text of the home/welcome Page for a given Domain: ')
+print('----------------------------------------------------------')
+print()
+print(html_page)
+print()
+print('Output 2: Found External Links:')
+print('------------------------------------')
+print()
 containers = page_soup.findAll("a", href=True)
 num = len(containers)
 for link in range(0,num):
 	#linki =str(link)
 	print(str(link +1) + '. ' + str(containers[link]['href']))
 
-	
 print()
-print("Downloading starting soon...............:")
+print("Output 3:   Downloading starting soon...............:")
+print('-------------------------------------------------------')
 print()
-number1 = 10
-#wget.download(url, 'c:/pyth/dwnlds/pythonLogo_' + str(number1) + '.txt')
 
-def sleep():
-    t = 0.01
-    t += t * random.uniform(-0.1, 0.1)  # Add some variance
-    time.sleep(t)
+num = len(containers)
 
+for link in range(0,num):
+    
 
-for link in range(0,3):
-	#wget.download(containers[link]['href'], 'c:/pyth/webscriping/dwnlds/test_' + str(link + 1) + '.txt')
-	#resp = req.get(containers[link]['href'])
-
-	file_name = 'c:/pyth/webscriping/dwnlds/Paper__' + str(link + 1) + '.txt'
-	file_stats = os.stat(file_name)
-	print('  Downloading page content for  Link ' + str(link + 1) + ' ' + str(file_stats.st_size) + ' Bytes received  Status: Progressing')
-
-	#wget.download(containers[link]['href'], 'c:/pyth/webscriping/dwnlds/Paper__' + str(link + 1) + '.txt')
+	#file_name = containers[link]['href']
+	#file_stats = os.stat(file_name)
 	#print('  Downloading page content for  Link ' + str(link + 1) + ' ' + str(file_stats.st_size) + ' Bytes received  Status: Progressing')
-	#print('  Downloading page content for  Link ' + str(link + 1) + '...')
+	print('  Downloading page content for  Link ' + str(link + 1) + ' ' + '100 Bytes received  Status: Progressing')
 
 print()
 print("Downloading starting...............:")
 print()
-suffix = '%(index)d/%(max)d [%(elapsed)d / %(eta)d / %(eta_td)s]'
-bar =Bar(Bar.__name__,suffix=suffix)
-for link in range(0,3):
-	#wget.download(containers[link]['href'], 'c:/pyth/webscriping/dwnlds/test_' + str(link + 1) + '.txt')
-	#resp = req.get(containers[link]['href'])
+num = len(containers)
 
+for link in range(0,num):
+	
+	wget.download(containers[link]['href'], 'c:/pyth/webscriping/progress-1.5/dwnlds/Paper__' + str(link + 1) + '.txt')
 	file_name = 'c:/pyth/webscriping/progress-1.5/dwnlds/Paper__' + str(link + 1) + '.txt'
 	file_stats = os.stat(file_name)
-	
-	wget.download(containers[link]['href'], 'c:/pyth/webscriping/progress-1.5/dwnlds/PaperTest__' + str(link + 1) + '.txt')
-	print('  Downloading page content for  Link ' + str(link + 1) + ' ' + str(file_stats.st_size) + ' Bytes received  Status: Progressing')
 
-
-
+	print('  Downloading page content for  Link ' + str(link + 1) + ' ' + str(file_stats.st_size) + ' Bytes received  Status: Completed')
 
